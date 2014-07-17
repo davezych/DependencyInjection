@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Castle.Windsor;
 using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.Resolvers;
 
 namespace Microsoft.Framework.DependencyInjection.Windsor
 {
@@ -9,6 +10,9 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
     {
         public static void Populate(IWindsorContainer container, IEnumerable<IServiceDescriptor> services, IServiceProvider fallbackProvider)
         {
+            var fallbackComponentLoader = new FallbackLazyComponentLoader(fallbackProvider);
+            container.Register(Component.For<ILazyComponentLoader>().Instance(fallbackComponentLoader));
+
             container.Register(Component.For<IWindsorContainer>().Instance(container));
             container.Register(Component.For<IServiceProvider>().ImplementedBy<WindsorServiceProvider>());
             container.Register(Component.For<IServiceScopeFactory>().ImplementedBy<WindsorServiceScopeFactory>());

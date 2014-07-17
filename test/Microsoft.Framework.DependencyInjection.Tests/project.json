@@ -5,8 +5,10 @@
     "Microsoft.Framework.DependencyInjection": "",
     "Microsoft.Framework.DependencyInjection.Autofac": "",
     "Microsoft.Framework.DependencyInjection.Ninject": "",
+    "Microsoft.Framework.DependencyInjection.Windsor": "",
     "Ninject": "3.0.1.10",
     "structuremap": "2.6.4.1",
+    "Castle.Windsor": "3.2.1",
     "Xunit.KRunner": "1.0.0-*"
   },
   "frameworks": {

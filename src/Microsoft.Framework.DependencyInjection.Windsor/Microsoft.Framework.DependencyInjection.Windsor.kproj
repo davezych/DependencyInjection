@@ -20,6 +20,7 @@
     <Content Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FallbackLazyComponentLoader.cs" />
     <Compile Include="KServiceInstaller.cs" />
     <Compile Include="WindsorRegistration.cs" />
   </ItemGroup>

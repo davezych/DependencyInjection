@@ -10,6 +10,12 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
 {
     public static class WindsorRegistration
     {
+        /// <summary>
+        /// Registers all services with the Windsor Container and sets up the fallback provider
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="services"></param>
+        /// <param name="fallbackProvider"></param>
         public static void Populate(IWindsorContainer container, IEnumerable<IServiceDescriptor> services, IServiceProvider fallbackProvider)
         {
             var fallbackComponentLoader = new FallbackLazyComponentLoader(fallbackProvider);

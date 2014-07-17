@@ -10,9 +10,9 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
         private IServiceProvider _fallbackProvider;
 
         public FallbackLazyComponentLoader(IServiceProvider provider)
-	    {
+	{
             _fallbackProvider = provider;
-	    }
+	}
 
         public IRegistration Load(string name, Type service, IDictionary arguments)
         {

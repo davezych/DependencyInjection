@@ -4,6 +4,7 @@ using Castle.Windsor;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.Resolvers;
 using Castle.MicroKernel.Lifestyle;
+using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 
 namespace Microsoft.Framework.DependencyInjection.Windsor
 {
@@ -13,6 +14,8 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
         {
             var fallbackComponentLoader = new FallbackLazyComponentLoader(fallbackProvider);
             container.Register(Component.For<ILazyComponentLoader>().Instance(fallbackComponentLoader));
+
+            container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel, true));
 
             container.Register(Component.For<IWindsorContainer>().Instance(container));
             container.Register(Component.For<IServiceProvider>().ImplementedBy<WindsorServiceProvider>());

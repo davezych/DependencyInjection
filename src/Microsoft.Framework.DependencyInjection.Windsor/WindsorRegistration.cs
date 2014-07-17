@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Castle.Windsor;
 using Castle.MicroKernel.Registration;
-using Castle.MicroKernel.Lifestyle;
 
 namespace Microsoft.Framework.DependencyInjection.Windsor
 {

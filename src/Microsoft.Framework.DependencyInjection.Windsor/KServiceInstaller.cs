@@ -17,7 +17,21 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            throw new NotImplementedException();
+            foreach (var service in _services)
+            {
+                if (service.ImplementationType != null)
+                {
+                    container.Register(
+                            Component.For(service.ServiceType)
+                                     .ImplementedBy(service.ImplementationType));
+                }
+                else
+                {
+                    container.Register(
+                            Component.For(service.ServiceType)
+                                     .Instance(service.ImplementationInstance));
+                }
+            }
         }
     }
 }

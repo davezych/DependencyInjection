@@ -12,6 +12,7 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
         {
             container.Register(Component.For<IWindsorContainer>().Instance(container));
             container.Register(Component.For<IServiceProvider>().ImplementedBy<WindsorServiceProvider>());
+            container.Register(Component.For<IServiceScopeFactory>().ImplementedBy<WindsorServiceScopeFactory>());
         }
 
         public class WindsorServiceProvider : IServiceProvider

@@ -67,5 +67,23 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
             {
             }
         }
+        
+        public static ComponentRegistration<object> ConfigureLifeCycle(this ComponentRegistration<object> registration, LifecycleKind kind)
+        {
+            switch (kind)
+            {
+                case LifecycleKind.Scoped:
+                    registration.LifestyleScoped();
+                    break;
+                case LifecycleKind.Singleton:
+                    registration.LifestyleSingleton();
+                    break;
+                case LifecycleKind.Transient:
+                    registration.LifestyleTransient();
+                    break;
+            }
+
+            return registration;
+        }
     }
 }

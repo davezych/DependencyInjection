@@ -21,15 +21,15 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
             {
                 if (service.ImplementationType != null)
                 {
-                    container.Register(
-                            Component.For(service.ServiceType)
-                                     .ImplementedBy(service.ImplementationType));
+                    container.Register(Component.For(service.ServiceType)
+                                                .ImplementedBy(service.ImplementationType)
+                                                .ConfigureLifeCycle(service.Lifecycle));
                 }
                 else
                 {
-                    container.Register(
-                            Component.For(service.ServiceType)
-                                     .Instance(service.ImplementationInstance));
+                    container.Register(Component.For(service.ServiceType)
+                                                .Instance(service.ImplementationInstance)
+                                                .ConfigureLifeCycle(service.Lifecycle));
                 }
             }
         }

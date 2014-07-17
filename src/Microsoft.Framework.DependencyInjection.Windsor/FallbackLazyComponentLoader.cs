@@ -16,7 +16,14 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
 
         public IRegistration Load(string name, Type service, IDictionary arguments)
         {
-            throw new NotImplementedException();
+            var serviceFromFallback = _fallbackProvider.GetService(service);
+
+            if (serviceFromFallback != null)
+            {
+                return Component.For(service).Instance(serviceFromFallback);
+            }
+
+            return null;
         }
     }
 }

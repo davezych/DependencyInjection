@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Castle.Windsor;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.Resolvers;
+using Castle.MicroKernel.Lifestyle;
 
 namespace Microsoft.Framework.DependencyInjection.Windsor
 {
@@ -54,10 +55,12 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
         {
             private readonly IWindsorContainer _container;
             private readonly IServiceProvider _serviceProvider;
+            private readonly IDisposable _scope;
 
             public WindsorServiceScope(IWindsorContainer container)
             {
                 _container = container;
+                _scope = _container.BeginScope();
                 _serviceProvider = _container.Resolve<IServiceProvider>();
             }
 
@@ -68,6 +71,7 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
 
             public void Dispose()
             {
+                _scope.Dispose();
             }
         }
         

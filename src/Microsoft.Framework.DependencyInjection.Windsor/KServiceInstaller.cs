@@ -10,9 +10,9 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
         private IEnumerable<IServiceDescriptor> _services;
 
         public KServiceInstaller(IEnumerable<IServiceDescriptor> services)
-	    {
+	{
             _services = services;
-	    }
+	}
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

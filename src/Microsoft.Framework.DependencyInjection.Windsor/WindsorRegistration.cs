@@ -30,7 +30,7 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
             container.Install(new KServiceInstaller(services));
         }
 
-        public class WindsorServiceProvider : IServiceProvider
+        private class WindsorServiceProvider : IServiceProvider
         {
             private IWindsorContainer _container;
 
@@ -84,7 +84,7 @@ namespace Microsoft.Framework.DependencyInjection.Windsor
             }
         }
         
-        public static ComponentRegistration<object> ConfigureLifeCycle(this ComponentRegistration<object> registration, LifecycleKind kind)
+        internal static ComponentRegistration<object> ConfigureLifeCycle(this ComponentRegistration<object> registration, LifecycleKind kind)
         {
             switch (kind)
             {
